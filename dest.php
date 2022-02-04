@@ -45,7 +45,7 @@ function addSpaces($campo, $totalSpaces)
 {
     if(mb_strlen($campo, 'utf8') >= $totalSpaces) return substr($campo, 0, $totalSpaces);
     $qtdSpaces = $totalSpaces - mb_strlen($campo, 'utf8'); 
-    for ($x = 0;$x < $qtdSpaces;$x++) $campo = $campo . ' ';
+    $campo .= str_repeat(" ", $qtdSpaces);
     return $campo;
 }
 
@@ -54,9 +54,7 @@ function addPrefix($campo, $totalSpaces)
 {
     if(mb_strlen($campo, 'utf8') >= $totalSpaces) return substr($campo, 0, $totalSpaces);
     $qtdSpaces = $totalSpaces - mb_strlen($campo, 'utf8'); 
-    $new = '';
-    for ($x = 0;$x < $qtdSpaces;$x++) $new .= ' ';
-    $campo = $new . $campo;
+    $campo = str_repeat(" ", $qtdSpaces) . $campo;
     return $campo;
 }
 
@@ -192,9 +190,7 @@ foreach($etiquetas as $etiqueta ) {
 // CONTAGEM E CRIAÇÃO STRING DA LINHA FINAL
 if(!(strlen($number_of_lines) >= 6)) {
     $qtd = 6 - strlen($number_of_lines); 
-    $new = '';
-    for ($x = 0;$x < $qtd;$x++) $new .= '0';
-    $number_of_lines = $new . $number_of_lines;
+    $number_of_lines = str_repeat("0", $qtd) . $number_of_lines;
 }
 
 // LINHA FINAL - INFORMANDO NUMERO DE REGISTROS
